@@ -1,0 +1,47 @@
+# what is stateful application?
+# A stateful application is a program that saves client data 
+# from the activities of one session for use in the next session
+# The data that is sabed is called as application's state 
+# 2) stateful application require that data that is used or generate by the application is persisted . retained , backed up and
+# accessible outside the of a particualr host that run the app
+# 3) Stateful application may expect to have static hostname of uts replicas
+# WHaT IS stateful set in kubernetes?
+# A statefulSet in k8s manages the deployment and scaling of a set of pods and provides gurantees about the ordering and uniqueness of these pods
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: db
+  labels:
+    app: redis
+spec:
+  replicas: 8
+  serviceName: redis
+  selector:
+    matchLabels:
+      app: redis
+  template:
+    metadata:
+      labels:
+        app: redis
+    spec:
+      containers:
+        - name: redis
+          image: redis:latest
+          ports:
+            - containerPort: 6379
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
