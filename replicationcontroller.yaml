@@ -1,5 +1,19 @@
-apiVersion
-kind
-metadata
-spec
-
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: rc1
+spec:
+  replicas: 3
+  selector:
+    app: httpd
+  template:
+    metadata:
+      name: rcpod
+      labels:
+        app: httpd
+    spec:
+      containers:
+        - name: httpdcon
+          image: httpd
+          ports:
+            - containerPort: 80
