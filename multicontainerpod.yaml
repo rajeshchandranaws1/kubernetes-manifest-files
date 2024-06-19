@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: multiconpod
+spec:
+  containers:
+    - name: c01httpd
+      image: httpd
+      ports:
+       - containerPort: 80
+    - name: c02ubuntu
+      image: ubuntu
+      command: ["sleep"]
+      args: ["infinity"]  
+
+
