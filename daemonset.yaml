@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: ds1
+  labels:
+    app: test
+spec:
+  selector:
+    matchLabels:
+      app: test
+  template:
+    metadata:
+      name: ds1
+      labels:
+        app: test
+    spec:
+        containers:
+          - name: dscon
+            image: httpd
+            ports:
+              - containerPort: 80
+
