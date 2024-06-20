@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment  
+metadata:
+  name: httpddep
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: deployment
+  template:
+    metadata:
+      labels:
+        name: deployment
+    spec:
+      containers:
+        - name: c1
+          image: httpd
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: httpdclusteripsvc
+spec:
+  selector:
+    name: deployment
+  type: ClusterIP
+  ports:
+   - port: 8001
+     targetPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: httpdnodeportsvc
+spec:
+  selector:
+    name: deployment
+  type: NodePort
+  ports:
+   - port: 8002
+     targetPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: httpdheadlesssvc
+spec:
+  selector:
+    name: deployment
+  type: ClusterIP
+  clusterIP: None  
+  ports:
+   - port: 8003
+     targetPort: 80
