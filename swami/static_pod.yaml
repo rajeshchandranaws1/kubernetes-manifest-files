@@ -1,0 +1,11 @@
+# For creating static pod, we have to keep this file under /etc/kubernetes/manifests/ folder
+apiVersion: v1
+kind: Pod
+metadata:
+  name: staticpod
+spec:
+  containers:
+    - name: c1
+      image: nginx
+      ports:
+        - containerPort: 80
