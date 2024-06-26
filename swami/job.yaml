@@ -1,0 +1,15 @@
+apiVersion: batch/v1
+kind: Job
+metadata: 
+  name: job1
+spec:
+  template:
+    metadata:
+      name: jobpod
+    spec:
+      containers:
+        - name: c1
+          image: busybox:1.28
+          command: ["/bin/sh", "-c", "sleep 60"]
+      restartPolicy: Never      
+

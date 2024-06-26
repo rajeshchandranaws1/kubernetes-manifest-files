@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: cronjob1
+spec:
+  schedule: "* * * * *"
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          name: cronjobpod
+        spec:
+          containers:
+            - name: c1
+              image: busybox:1.28
+              command: ["/bin/sh", "-c", "sleep 60"]
+          restartPolicy: Never      
