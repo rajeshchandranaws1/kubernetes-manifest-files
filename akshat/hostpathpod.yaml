@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hostpathpod
+spec:
+  containers:
+    - name: c1
+      image: nginx
+      ports:
+        - containerPort: 80
+      volumeMounts:
+        - name: vol1
+          mountPath: /var/log/nginx
+  volumes:
+      - name: vol1
+        hostPath:
+          path: /rc/logs
+          type: Directory    
+
