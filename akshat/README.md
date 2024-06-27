@@ -1,6 +1,6 @@
 # Permanently authenticating with Git repositories
 Run the following command to enable credential caching:<br>
-abc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
+ghp_191wN8uucbm81h7n3DbQHeENNzdxYmx2NRIJ2
 
 ```
 $ git config credential.helper store
