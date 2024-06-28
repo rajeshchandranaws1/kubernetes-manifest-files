@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: configmap1volpod
+spec:
+  containers:
+    - name: c1
+      image: nginx
+      volumeMounts:
+        - name: v1
+          mountPath: "/rajesh/configmap"  
+  volumes:
+    - name: v1
+      configMap:
+        name: configmap1    
+
