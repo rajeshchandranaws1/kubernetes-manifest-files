@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: configmapdevdeploy
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      tier: dev
+  template:
+    metadata:
+      name: configmapdevpod
+      labels:
+        tier: dev
+    spec:
+      containers:
+        - name: c1
+          image: nginx
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: v1
+              mountPath: "/usr/share/nginx/html"
+      volumes:
+        - name: v1
+          configMap:
+            name: configmapdevhtml
+    
+

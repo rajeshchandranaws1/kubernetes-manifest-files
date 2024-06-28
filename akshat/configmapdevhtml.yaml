@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configmapdevhtml
+data:
+  index.html: |
+   
+    Hi Rajesh
+    
+    Welcome to index.html (Dev)
+
+
