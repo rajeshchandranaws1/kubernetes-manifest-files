@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nodenamepod
+spec:
+  containers:
+  - name: c1
+    image: busybox
+    args:
+    - /bin/sh
+    - -c
+    - sleep 600
+  nodeName: k8s-node2
