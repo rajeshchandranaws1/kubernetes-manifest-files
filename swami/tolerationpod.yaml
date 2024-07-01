@@ -1,0 +1,14 @@
+apiVersion: v1                  
+kind: Pod                       
+metadata:                       
+  name: tolerationpod
+spec:                           
+  containers:
+  - name: nginxcontainer
+    image: nginx 
+  tolerations: 
+  - key: type
+    operator: Equal
+    value: gpu
+    effect: NoSchedule
+
