@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pvpvcrwxpod2
+spec:
+  containers:
+    - name: c1
+      image: tomcat:8.5
+      volumeMounts:
+        - name: pvvol1
+          mountPath: "/usr/local/tomcat/logs"
+  volumes:
+    - name: pvvol1
+      persistentVolumeClaim:
+        claimName: pvcrwx
+
+

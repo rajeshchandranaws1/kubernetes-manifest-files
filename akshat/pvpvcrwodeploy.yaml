@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment  
+metadata:
+  name: pvpvcrwodeploy
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: pvdeploy
+  template:
+    metadata:
+      name: pvpvcrwopod
+      labels:
+        name: pvdeploy
+    spec:
+      containers:
+        - name: c1
+          image: tomcat:8.5
+          volumeMounts:
+            - name: pvvol1
+              mountPath: "/usr/local/tomcat/logs"
+      volumes:
+        - name: pvvol1
+          persistentVolumeClaim:
+            claimName: pvcrwo
