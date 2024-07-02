@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pvrwo
+spec:
+  storageClassName: standard
+  persistentVolumeReclaimPolicy: Delete #Recycle#Retain/Delete
+  capacity:
+    storage: 1000Mi
+  accessModes:
+    - ReadWriteOnce
+      #ReadWriteOnce: the volume can be mounted as a read write by a single node
+      #ReadOnlyMany: The volume can be mounted read only by many nodes
+      #ReadWriteMany: the volumes can be mounted as read write by many nodes 
+  hostPath:
+    path: /tmp/pvdata
+
