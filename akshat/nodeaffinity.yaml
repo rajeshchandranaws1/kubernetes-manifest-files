@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: affinitydeploy
+spec:
+  replicas: 20
+  selector:
+    matchLabels:
+      tier: frontend
+  template:
+    metadata:
+      labels:
+        tier: frontend
+    spec:
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 80
+            preference:
+              matchExpressions:
+              - key: diskType
+                operator: In
+                values:
+                  - flash
+          - weight: 20
+            preference:
+              matchExpressions:
+              - key: diskType
+                operator: In
+                values:
+                  - ssd
+      containers:
+      - name: c1
+        image: nginx
+        ports:
+        - containerPort: 80
+          
+
